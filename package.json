@@ -2,9 +2,9 @@
     "name": "webapp",
     "version": "1.0.0",
     "description": "Your project description",
-    "main": "src/composition.js", 
+    "main": "public/composition.html", 
     "scripts": {
-        "start": "node src/composition.js" 
+        "start": "node public/composition.html" 
     },
     "dependencies": {
         
