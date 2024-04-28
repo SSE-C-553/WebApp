@@ -2,16 +2,16 @@
     "name": "webapp",
     "version": "1.0.0",
     "description": "Your project description",
-    "main": "index.js",
+    "main": "src/composition.js", 
     "scripts": {
-        "start": "node index.js"
+        "start": "node src/composition.js" 
     },
     "dependencies": {
-      
+        
     },
     "devDependencies": {
-      
+       
     },
     "author": "webapp",
     "license": "MIT"
-    }
+}
