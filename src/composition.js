@@ -1,1 +1,1 @@
-window.location.href = 'public/composition.html';
+console.log("Composition page loaded!");
