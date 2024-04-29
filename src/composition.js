@@ -1,1 +1,1 @@
-console.log("Composition page loaded!");
+alert('jojo')
