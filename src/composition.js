@@ -3,20 +3,30 @@ const fs = require('fs');
 const path = require('path');
 
 const server = http.createServer((req, res) => {
-    // リクエストされたURLを取得
-    const url = req.url === '/' ? '/composition.html' : req.url;
-    // ファイルのパスを作成
-    const filePath = path.join(__dirname, 'public', url);
-    // ファイルが存在するかチェック
-    fs.access(filePath, fs.constants.F_OK, (err) => {
+    let filePath = path.join(__dirname, 'public', req.url === '/' ? 'composition.html' : req.url);
+    const extname = path.extname(filePath);
+
+    // デフォルトでHTMLファイルを提供するようにします
+    if (extname === '') {
+        filePath += '.html';
+    }
+
+    fs.readFile(filePath, (err, content) => {
         if (err) {
-            // ファイルが存在しない場合は404を返す
-            res.writeHead(404);
-            res.end('Not Found');
-            return;
+            if (err.code === 'ENOENT') {
+                // ファイルが見つからない場合は404エラーを返します
+                res.writeHead(404, {'Content-Type': 'text/html'});
+                res.end('<h1>404 Not Found</h1>');
+            } else {
+                // その他のエラーの場合は、500エラーを返します
+                res.writeHead(500);
+                res.end(`Server Error: ${err.code}`);
+            }
+        } else {
+            // ファイルが見つかった場合は、コンテンツを返します
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            res.end(content, 'utf-8');
         }
-        // ファイルが存在する場合は読み取りストリームを作成してレスポンスとして送信
-        fs.createReadStream(filePath).pipe(res);
     });
 });
 
