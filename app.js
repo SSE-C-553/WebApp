@@ -1,8 +1,14 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.get("/", (req, res) => res.type('html').send(html));
+// 静的ファイルを提供するためのミドルウェアを追加
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
