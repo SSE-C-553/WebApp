@@ -4,9 +4,9 @@
     "description": "A simple Node.js website for Render.com",
     "main": "src/app.js",
     "scripts": {
-      "start": "node src/app.js"
+        "start": "node src/app.js"
     },
     "dependencies": {
-      "express": "^4.17.1"
+        "express": "^4.17.1"
     }
-  }
+    }
