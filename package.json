@@ -1,17 +1,12 @@
 {
-    "name": "webapp",
+    "name": "render-com-node-js-website",
     "version": "1.0.0",
-    "description": "Your project description",
-    "main": "src/composition.js", 
+    "description": "A simple Node.js website for Render.com",
+    "main": "src/app.js",
     "scripts": {
-        "start": "node src/composition.js" 
+      "start": "node src/app.js"
     },
     "dependencies": {
-        
-    },
-    "devDependencies": {
-
-    },
-    "author": "webapp",
-    "license": "MIT"
-}
+      "express": "^4.17.1"
+    }
+  }
