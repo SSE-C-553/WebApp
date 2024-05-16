@@ -1,10 +1,61 @@
-const express = require("express");
+import express from "express";
+import path from "path";
+import { fileURLToPath } from "url";
+
 const app = express();
-const port = process.env.PORT || 3001;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-app.get("/", (req, res) => res.type('html').send(html));
+// ルートパスへのリクエスト
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "login.html"));
+});
 
-const server = app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+// ログイン要求のリクエスト
+app.get("/login", (req, res) => {
 
-server.keepAliveTimeout = 120 * 1000;
-server.headersTimeout = 120 * 1000;
+});
+
+// 認証完了後のリクエスト
+app.get("/success", (req, res) => {
+  res.status(200).send("success");
+});
+
+import crypto from "crypto";
+
+/* 一部処理の記載を省略 */
+
+// リダイレクトURL生成処理
+const createRedirectUrl = () => {
+  const bytes = crypto.randomBytes(32);
+  const state = bytes.toString("base64url");
+
+  const redirectUrl =
+    "https://access.line.me/oauth2/v2.1/authorize?" +
+    "response_type=code" +
+    `&client_id=${process.env.CHANNEL_ID}` +
+    `&redirect_uri=${process.env.CALLBACK_URL}` +
+    `&state=${state}` +
+    "&scope=profile%20openid";
+  return redirectUrl;
+};
+
+/* 一部処理の記載を省略 */
+
+// ログイン要求のリクエスト
+app.get("/login", (req, res) => {
+  const redirect = createRedirectUrl();
+  res.redirect(redirect);
+});
+
+
+/* 一部処理の記載を省略 */
+
+const PORT = 3000;
+
+/* 一部処理の記載を省略 */
+
+// リッスンするポートの設定
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
