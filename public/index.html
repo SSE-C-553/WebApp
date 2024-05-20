@@ -1,32 +1,48 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>時間割編成</title>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script src="/script.js"></script>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+
+  <title>時間割編成</title>
+    <script src="js/script.js"></script>
     <style>
-        table {
-          width: 100%;
-          border-collapse: collapse;
-        }
-    
-        th,
-        td {
-          border: 1px solid black;
-          padding: 8px;
-          text-align: center;
-        }
-    
-        th {
-          background-color: #f2f2f2;
-        }
+    .container{
+      overflow-x: scroll; /*水平スクロール*/
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 800px;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .button-container{
+      position:fixed;
+      bottom: 20px;
+      right: 20px;
+    }
       </style>
   </head>
   <body>
     <div class="container">
       <h1>時間割編成画面</h1>
   
-      <table>
+      <table id="data-table">
         <thead>
           <tr>
             <th rowspan="2" width="20">学年</th>
@@ -837,14 +853,14 @@
         </tbody>
       </table>
   
+        <button type="button" id="btn1" style="float: right;">時間割編成!</button>
+  
       <input type="button" onclick="location.href='inputclass.html'
           " value="コマ入力フォームへ">
       <input type="button" onclick="location.href='inputdata.html'
           " value="基礎データ入力画面">
-  
-  
-  
+      
     </div>
-    <script src="/index.js"></script>
+    <script src="js/data.js"></script>
   
 </html>

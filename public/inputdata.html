@@ -21,16 +21,20 @@
     .data-row > div {
       margin-right: 20px;
     }
+    .custom-text-color {
+            color: #007bff !important;
+        }
   </style>
 </head>
 
 <body class="bg-light">
   <div class="mt-3 container w-75">
-    <h1 class="text-center text-info m-4">基礎データ入力画面</h1>
+    <h1 class="text-center text-info m-4 custom-text-color">基礎データ入力画面</h1>
     <form id="dataForm" class="mt-4">
       <div class="row">
         <div class="col-md-4 mb-3">
           <div class="p-3 border">
+            <h2 class="text-center text-info m-3">科目データ登録</h2>
             <label for="subject" class="mt-1">科目名:</label>
             <input type="text" id="subject" name="subject" class="mt-2 form-control"><br>
             <label for="subjectTime" class="mt-1">コマ時間数:</label>
@@ -55,6 +59,7 @@
         </div>
         <div class="col-md-4 mb-3">
           <div class="p-3 border">
+            <h2 class="text-center text-info m-3">教員データ登録</h2>
             <label for="teacher" class="mt-1">教員名:</label>
             <input type="text" id="teacher" name="teacher" class="mt-2 form-control"><br>
             <label for="teacherAffiliation" class="mt-1">所属:</label>
@@ -77,13 +82,14 @@
         </div>
         <div class="col-md-4 mb-3">
           <div class="p-3 border">
+            <h2 class="text-center text-info m-3">教室データ登録</h2>
             <label for="classroom" class="mt-1">教室名:</label>
             <input type="text" id="classroom" name="classroom" class="mt-2 form-control"><br>
             <label for="classroomHR" class="mt-1">使用する教室:</label>
             <select id="classroomHR" name="classroomHR" class="mt-2 form-control">
               <option value="特別教室">特別教室</option>
               <option value="HR">HR</option>
-            </select><br>
+            </select><br><br><br><br><br>
             <input type="submit" id="submitClassroom" value="教室保存" class="mb-2 btn btn-outline-info">
           </div>
         </div>
@@ -107,12 +113,12 @@
     </div>
 
     <div class="text-center mt-3">
-      <input type="button" onclick="location.href='inputclass.html'" value="コマ入力フォームへ" class="btn btn-secondary mx-1">
       <input type="button" onclick="location.href='index.html'" value="時間割編成画面へ" class="btn btn-secondary mx-1">
+      <input type="button" onclick="location.href='inputclass.html'" value="コマ入力フォームへ" class="btn btn-secondary mx-1">
     </div>
   </div>
 
-  <script src="/inputdata.js"></script>
+  <script src="js/inputdata.js"></script>
 
 </body>
 
